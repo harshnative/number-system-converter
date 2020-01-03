@@ -1,0 +1,420 @@
+#include<iostream>
+#include<math.h>
+#include<conio.h>
+#include<windows.h>
+#include<stdlib.h>
+
+using namespace std;
+
+
+
+
+int decFloating(double input, int baseValue1)       //func for dec floating point 
+{
+	double temp;
+	temp = input;
+	int intPart = (int)temp;
+  double decPart = temp - intPart;
+  int n=0;
+  double loopV0;
+  int loopV1[100];
+  
+	for(int i=0;i<10;i++)
+	{	
+		loopV0 = decPart * baseValue1 ;
+		loopV1[i] = (int)loopV0 ;
+		decPart = loopV0 - loopV1[i] ;
+		n = n + 1 ;
+		if(decPart==0)
+		{
+			break;
+		}
+	}
+	for(int i=0;i<n;i++)
+	{
+		cout<<loopV1[i];
+	}
+}
+
+
+
+
+
+
+
+
+
+
+float decToAny(double temp, int baseValue1)                 //func for dec to any number system 
+{
+	double temp1 = temp;
+	int input = (int)temp1;
+	int temp2 = input;
+	int ans[100];
+	int n=0,m=0;	
+	
+	//calculating the output 	
+		while(1)							//technically infinite loop
+		{
+			ans[n] = input % baseValue1;
+			input = input / baseValue1;
+			n++;
+			if(input<baseValue1)
+			{
+				ans[n] = input ;
+				break;
+			}
+ 		}
+ 						cout<<"[ "<<temp<<" ]"<<"10 = [ ";
+ 						//printing values
+				 		for(int i=n;i>=0;i--)
+				 		{
+				 		
+				 			if(baseValue1>10&&baseValue1<=36)
+				 			{
+							 
+				 			switch(ans[i])
+				 			{
+				 				case 10 : cout<<"A"; break;
+				 				case 11 : cout<<"B"; break;
+				 				case 12 : cout<<"C"; break;
+				 				case 13 : cout<<"D"; break;
+				 				case 14 : cout<<"E"; break;
+				 				case 15 : cout<<"F"; break;
+				 				case 16 : cout<<"G"; break;
+				 				case 17 : cout<<"H"; break;
+				 				case 18 : cout<<"I"; break;
+				 				case 19 : cout<<"J"; break;
+				 				case 20 : cout<<"K"; break;
+				 				case 21 : cout<<"L"; break;
+				 				case 22 : cout<<"M"; break;
+				 				case 23 : cout<<"N"; break;
+				 				case 24 : cout<<"O"; break;
+				 				case 25 : cout<<"P"; break;
+				 				case 26 : cout<<"Q"; break;
+				 				case 27 : cout<<"R"; break;
+				 				case 28 : cout<<"S"; break;
+				 				case 29 : cout<<"T"; break;
+				 				case 30 : cout<<"U"; break;
+				 				case 31 : cout<<"V"; break;
+				 				case 32 : cout<<"W"; break;
+				 				case 33 : cout<<"X"; break;
+				 				case 34 : cout<<"Y"; break;
+				 				case 35 : cout<<"Z"; break;
+								default : cout<<ans[i];
+				 				
+							}
+							}	
+							else
+							if(baseValue1<=10)
+							{
+								cout<<ans[i];
+				 			}
+				 			else
+				 			{
+				 				system("cls");
+				 				cout<<"error";
+				 				getch();
+				 				exit(1);
+							 }
+		 				}
+		 				
+		 				
+  double decPart = temp1 - temp2;
+  if(decPart==0)
+  {
+  	cout<<"";
+  }
+  else
+  {
+  	cout<<".";
+  	decFloating(temp1,baseValue1);
+  }
+		 				
+		 				cout<<" ]"<<baseValue1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+double anyToDec( char input[100] , int baseValue0 , int length )				//func to conver a dec to any system 
+{
+	char value1[100],value2[100];
+	int count = 0,count1 = 0;
+	int m = 0;
+	for(int i = 0 ; i <= length-1 ; i++)
+	{
+		if(input[i]=='.')
+		{
+			m++;
+			break;
+		}
+		count++;
+		value1[i] = input[i];
+	}
+	int j = 0; 
+	for(int i = count+1 ; i <= length-1 ; i++)
+	{
+		value2[j] = input[i];
+		count1++;
+		j++;
+	}
+	
+	double sum = 0 ;
+	int temp;
+	
+	for(int i = count-1 ; i>=0 ; i--)
+	{		
+		switch(value1[i])
+		{
+			case '0' : temp = 0; break;
+			case '1' : temp = 1; break;
+			case '2' : temp = 2; break;
+			case '3' : temp = 3; break;
+			case '4' : temp = 4; break;
+			case '5' : temp = 5; break;
+			case '6' : temp = 6; break;
+			case '7' : temp = 7; break;
+			case '8' : temp = 8; break;
+			case '9' : temp = 9; break;
+			case 'a' : temp =  10; break;
+			case 'b' : temp =  11; break;
+			case 'c' : temp =  12; break;
+			case 'd' : temp =  13; break;
+			case 'e' : temp =  14; break;
+			case 'f' : temp =  15; break;
+			case 'g' : temp =  16; break;
+			case 'h' : temp =  17; break;
+			case 'i' : temp =  18; break;
+			case 'j' : temp =  19; break;
+			case 'k' : temp =  20; break;
+			case 'l' : temp =  21; break;
+			case 'm' : temp =  22; break;
+			case 'n' : temp =  23; break;
+			case 'o' : temp =  24; break;
+			case 'p' : temp =  25; break; 
+			case 'q' : temp =  26; break;
+			case 's' : temp =  27; break;
+			case 'r' : temp =  28; break;
+			case 't' : temp =  29; break;
+			case 'u' : temp =  30; break;
+			case 'v' : temp =  31; break;
+			case 'w' : temp =  32; break;
+			case 'x' : temp =  33; break; 
+			case 'y' : temp =  34; break;
+			case 'z' : temp =  35; break;
+			case 'A' : temp =  10; break;
+			case 'B' : temp =  11; break; 
+			case 'C' : temp =  12; break;
+			case 'D' : temp =  13; break;
+			case 'E' : temp =  14; break;
+			case 'F' : temp =  15; break;
+			case 'G' : temp =  16; break;
+			case 'H' : temp =  17; break;
+			case 'I' : temp =  18; break;
+			case 'J' : temp =  19; break;
+			case 'K' : temp =  20; break;
+			case 'L' : temp =  21; break;
+			case 'M' : temp =  22; break;
+			case 'N' : temp =  23; break;
+			case 'O' : temp =  24; break;
+			case 'P' : temp =  25; break;
+			case 'Q' : temp =  26; break;
+			case 'R' : temp =  27; break;
+			case 'S' : temp =  28; break;
+			case 'T' : temp =  29; break;
+			case 'U' : temp =  30; break;
+			case 'V' : temp =  31; break;
+			case 'W' : temp =  32; break;
+			case 'X' : temp =  33; break;
+			case 'Y' : temp =  34; break;
+			case 'Z' : temp =  35; break;
+			default : { system("cls"); cout<<"error"; getch(); exit(1) ; }
+ 		}
+		 sum = sum + (temp * (pow(baseValue0,i)));
+ 		
+ 	}
+ 	for(int i=0;i<=count1-1;i++)
+ 	{
+ 		if(m==0)
+ 		{
+ 			break;
+		 }
+ 		
+ 		switch(value2[i])
+		{
+			
+			case '0' : temp = 0; break;
+			case '1' : temp = 1; break;
+			case '2' : temp = 2; break;
+			case '3' : temp = 3; break;
+			case '4' : temp = 4; break;
+			case '5' : temp = 5; break;
+			case '6' : temp = 6; break;
+			case '7' : temp = 7; break;
+			case '8' : temp = 8; break;
+			case '9' : temp = 9; break;
+			case 'a' : temp =  10; break;
+			case 'b' : temp =  11; break;
+			case 'c' : temp =  12; break;
+			case 'd' : temp =  13; break;
+			case 'e' : temp =  14; break;
+			case 'f' : temp =  15; break;
+			case 'g' : temp =  16; break;
+			case 'h' : temp =  17; break;
+			case 'i' : temp =  18; break;
+			case 'j' : temp =  19; break;
+			case 'k' : temp =  20; break;
+			case 'l' : temp =  21; break;
+			case 'm' : temp =  22; break;
+			case 'n' : temp =  23; break;
+			case 'o' : temp =  24; break;
+			case 'p' : temp =  25; break; 
+			case 'q' : temp =  26; break;
+			case 's' : temp =  27; break;
+			case 'r' : temp =  28; break;
+			case 't' : temp =  29; break;
+			case 'u' : temp =  30; break;
+			case 'v' : temp =  31; break;
+			case 'w' : temp =  32; break;
+			case 'x' : temp =  33; break; 
+			case 'y' : temp =  34; break;
+			case 'z' : temp =  35; break;
+			case 'A' : temp =  10; break;
+			case 'B' : temp =  11; break; 
+			case 'C' : temp =  12; break;
+			case 'D' : temp =  13; break;
+			case 'E' : temp =  14; break;
+			case 'F' : temp =  15; break;
+			case 'G' : temp =  16; break;
+			case 'H' : temp =  17; break;
+			case 'I' : temp =  18; break;
+			case 'J' : temp =  19; break;
+			case 'K' : temp =  20; break;
+			case 'L' : temp =  21; break;
+			case 'M' : temp =  22; break;
+			case 'N' : temp =  23; break;
+			case 'O' : temp =  24; break;
+			case 'P' : temp =  25; break;
+			case 'Q' : temp =  26; break;
+			case 'R' : temp =  27; break;
+			case 'S' : temp =  28; break;
+			case 'T' : temp =  29; break;
+			case 'U' : temp =  30; break;
+			case 'V' : temp =  31; break;
+			case 'W' : temp =  32; break;
+			case 'X' : temp =  33; break;
+			case 'Y' : temp =  34; break;
+			case 'Z' : temp =  35; break;
+			default : { system("cls"); cout<<"error"; getch(); exit(1) ; }
+ 		}
+ 	
+ 	
+ 		static int n = 1;
+ 		sum = sum + (temp * (1/(pow(baseValue0,n))));
+	    n++;	
+	}
+	return sum;
+}
+
+
+
+
+
+	
+	
+	
+	
+	
+
+int main()
+{
+	
+//font size change	
+	CONSOLE_FONT_INFOEX cfi;
+	cfi.cbSize = sizeof(cfi);
+	cfi.nFont = 0;
+	cfi.dwFontSize.X = 0;                   // Width of each character in the font
+	cfi.dwFontSize.Y = 24;                  // Height
+	cfi.FontFamily = FF_DONTCARE;
+	cfi.FontWeight = FW_NORMAL;
+	std::wcscpy(cfi.FaceName, L"Consolas"); // Choose your font
+	SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
+	
+	
+	
+
+	
+	
+	double input;
+	int baseValue0,baseValue1;
+	
+
+	cout<<"standard base values - ";
+	cout<<"\n1. decimal     - 10";
+	cout<<"\n2. binary      -  2";
+	cout<<"\n3. quatnery    -  4";
+	cout<<"\n4. octal       -  8";
+	cout<<"\n5. hexadecimal - 16";
+	cout<<"\n\nplease take the help from above chart\nyou can enter the max base value of 36\nenter the base value of the number to be converted : ";
+	cin>>baseValue0;
+	system("cls");
+
+	cout<<"standard base values - ";
+	cout<<"\n1. decimal     - 10";
+	cout<<"\n2. binary      -  2";
+	cout<<"\n3. quatnery    -  4";
+	cout<<"\n4. octal       -  8";
+	cout<<"\n5. hexadecimal - 16";
+	cout<<"\n\nplease take the help from above chart\nyou can enter the max base value of 36\nenter the base value of system to which the number will be converted : ";
+	cin>>baseValue1;
+	system("cls");
+	
+	
+	if(baseValue0==10)
+	{
+		cout<<"\nenter the number to be converted : ";
+		cin>>input;
+		system("cls");
+	
+		decToAny(input,baseValue1);
+	}
+	
+	else
+	if(baseValue1==10)
+	{
+		system("cls");
+		cout<<"enter the number to be converted - ";
+		char inputMain[100];
+		cin>>inputMain;
+		int lengthMain = strlen(inputMain);
+		double result;
+		result = anyToDec(inputMain , baseValue0 , lengthMain);
+		cout<<"\n\n\nresult = "<<result; 
+	}
+	else
+	{
+		system("cls");
+		cout<<"enter the number to be converted - ";
+		char inputMain[100];
+		cin>>inputMain;
+		int lengthMain = strlen(inputMain);
+		double result;
+		result = anyToDec(inputMain , baseValue0 , lengthMain);
+		decToAny(result , baseValue1);
+	}
+	
+	
+	
+	return 0;
+}
