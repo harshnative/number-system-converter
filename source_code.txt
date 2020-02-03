@@ -353,13 +353,15 @@ int main()
 	
 	
 	
-
+	
 	
 	
 	double input;
 	int baseValue0,baseValue1;
 	
-
+	
+	start : ;			//goto statement 
+	
 	cout<<"standard base values - ";
 	cout<<"\n1. decimal     - 10";
 	cout<<"\n2. binary      -  2";
@@ -380,6 +382,7 @@ int main()
 	cin>>baseValue1;
 	system("cls");
 	
+	mid : ; 			//goto statement 
 	
 	if(baseValue0==10)
 	{
@@ -414,6 +417,31 @@ int main()
 		decToAny(result , baseValue1);
 	}
 	
+	getch();
+	system("cls");
+	int choice = 0 ;
+	
+	
+	cout<<"\n0. for exiting the program";
+	cout<<"\n1. for converting another number with same baseValue's";
+	cout<<"\n2. for converting another number with another baseValue's";
+	cout<<"\n\nEnter your choice - ";
+	cin>>choice;
+	
+	system("cls");
+	if(choice==1)
+	{
+		goto mid;
+	}
+	else
+	if(choice==2)
+	{
+		goto start;
+	}
+	else
+	{
+		exit(0);
+	}
 	
 	getch();
 	return 0;
